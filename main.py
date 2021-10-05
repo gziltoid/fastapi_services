@@ -1,11 +1,12 @@
 from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 from schemas import Phone
 
 
 app = FastAPI()
 
 
-@app.post('/unify_phone_from_json')
+@app.post('/unify_phone_from_json', response_class=PlainTextResponse)
 def unify_phone_from_json(phone: Phone):
     return format_phone(phone.phone)
 
