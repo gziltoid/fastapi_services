@@ -6,8 +6,8 @@ app = FastAPI()
 
 
 @app.post('/unify_phone_from_json')
-def unify_phone_from_json(phone: str):
-    return format_phone(phone)
+def unify_phone_from_json(phone: Phone):
+    return format_phone(phone.phone)
 
 
 def format_phone(phone):
