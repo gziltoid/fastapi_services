@@ -5,7 +5,7 @@ from fastapi.responses import PlainTextResponse
 app = FastAPI()
 
 
-@app.post('/unify_phone_from_from', response_class=PlainTextResponse)
+@app.post('/unify_phone_from_form', response_class=PlainTextResponse)
 def unify_phone_from_form(phone: str = Form(...)):
     return format_phone(phone)
 
