@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Form, Query
+from fastapi import FastAPI, Form, Cookie
 from fastapi.responses import PlainTextResponse
 from schemas import Phone
 
@@ -18,6 +18,11 @@ def unify_phone_from_form(phone: str = Form(...)):
 
 @app.get('/unify_phone_from_query', response_class=PlainTextResponse)
 def unify_phone_from_query(phone: str):
+    return format_phone(phone)
+
+
+@app.get('/unify_phone_from_cookies', response_class=PlainTextResponse)
+def unify_phone_from_cookies(phone: str = Cookie(...)):
     return format_phone(phone)
 
 
