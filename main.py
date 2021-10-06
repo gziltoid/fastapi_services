@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Form, Query
 from fastapi.responses import PlainTextResponse
 from schemas import Phone
 
@@ -9,6 +9,16 @@ app = FastAPI()
 @app.post('/unify_phone_from_json', response_class=PlainTextResponse)
 def unify_phone_from_json(phone: Phone):
     return format_phone(phone.phone)
+
+
+@app.post('/unify_phone_from_form', response_class=PlainTextResponse)
+def unify_phone_from_form(phone: str = Form(...)):
+    return format_phone(phone)
+
+
+@app.get('/unify_phone_from_query', response_class=PlainTextResponse)
+def unify_phone_from_query(phone: str):
+    return format_phone(phone)
 
 
 def format_phone(phone):
